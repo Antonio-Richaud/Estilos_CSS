@@ -3,69 +3,132 @@
    ---- Hecho con <3 por Antonio Richaud c: --
    ------------------------------------------- 
 */
+@charset 'UTF-8';
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  border: 1px solid red;
 }
 
 html {
-    height: 100%;
 }
 
 body {
-    font-family: 'Manrope', sans-serif;
-    font-size: 16px;
-    height: 100%;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  height: 100%;
 }
 
-.grid {
-    display: grid;
-    grid-template-rows: 6rem 5rem auto 5rem;
-    grid-template-columns: 20% auto 20%;
-    font-size: 1.5rem;
-    height: 100%;
+.Body {
+  display: grid;
+  grid-template-rows: 20vh 55vh 25vh;
+  grid-template-columns: 20% auto 20%;
+  font-size: 1.5rem;
 }
 
-@media (max-width: 480px) {
-    .grid {
-        grid-template-rows:
-            6rem 6rem 6rem auto 6rem 6rem;
-        grid-template-columns: 1fr;
-    }
+/* Comienzo <Header> */
+.Header {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
 
-    aside,
-    main {
-        grid-column: 1 / 4;
-    }
+  width: 100%;
+
+  display: flex;
+  flex-flow: column;
+
+  text-align: center;
+  background-color: #f6c356;
 }
 
-nav,
-header,
-footer {
-    background: #F6C356;
-    grid-column: 1 / 4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.Header .navbar {
+  width: 100%;
+  height: 50%;
+
+  text-align: center;
+
+  background-color: #aaec8a;
 }
 
-nav {
-    background: #AAEC8A;
+/* Comienzo <SidebarLeft> */
+.SidebarLeft {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+
+  text-align: center;
+  background-color: #99c2fe;
 }
 
-aside,
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Comienzo <Main> */
+.Main {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+
+  display: flex;
+  flex-flow: column;
+  place-content: center center;
+
+  text-align: center;
+  background-color: #b881ff;
 }
 
-aside {
-    background: #99C2FE;
+/* Comienzo <SidebarRight> */
+.SidebarRight {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+
+  text-align: center;
+  background-color: #99c2fe;
 }
 
-main {
-    background: #B881FF;
+/* Comienzo <Footer> */
+.Footer {
+  grid-column: 1 / 4;
+  grid-row: 3 / 4;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column;
+  place-content: center center;
+
+  text-align: center;
+  background-color: #f7e1d7;
 }
+
+/* Media Queries ==> SM : 480px */
+@media screen and (max-width: 480px) {
+  .Body {
+    grid-template-rows: 10vh repeat(2, 5vh) 70vh 10vh;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .Header {
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+  }
+
+  .SidebarLeft {
+    grid-column: 1 / 5;
+    grid-row: 2 / 3;
+  }
+
+  .SidebarRight {
+    grid-column: 1 / 5;
+    grid-row: 3 / 4;
+  }
+
+  .Main {
+    grid-column: 1 / 5;
+    grid-row: 4 / 5;
+  }
+
+  .Footer {
+    grid-column: 1 / 5;
+    grid-row: 5 / 6;
+  }
+}
+
