@@ -5,6 +5,23 @@
 */
 @charset 'UTF-8';
 
+:root {
+  /* Configuracion fuentes */
+  --f_fontSize: 16px;
+  --f_lineHeight: 1.5;
+  --f_fontWeight: 400;
+  --f_fontFamily: "Manrope", sans-serif;
+
+  /* Paleta de colores */
+  --c_white: #fff;
+  --c_black: #000;
+  --c_orange500: #f6c356;
+  --c_green500: #aaec8a;
+  --c_blue500: #99c2fe;
+  --c_purple500: #b881ff;
+  --c_pink500: #f7e1d7;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -14,33 +31,34 @@
 }
 
 html {
-}
-
-body {
-  font-family: "Manrope", sans-serif;
-  font-size: 16px;
-  height: 100%;
+  font-size: var(--f_fontWeight);
+  line-height: var(--f_lineHeight);
+  font-weight: var(--f_fontWeight);
+  font-family: var(--f_fontFamily);
 }
 
 .Body {
   display: grid;
   grid-template-rows: 20vh 55vh 25vh;
-  grid-template-columns: 20% auto 20%;
-  font-size: 1.5rem;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 0;
+
+  font-size: clamp(100%, 1rem + 1.5vw, 25px);
 }
 
 /* Comienzo <Header> */
 .Header {
-  grid-column: 1 / 4;
+  grid-column: 1 / 13;
   grid-row: 1 / 2;
 
   width: 100%;
 
   display: flex;
   flex-flow: column;
+  place-content: center center;
 
   text-align: center;
-  background-color: #f6c356;
+  background-color: var(--c_orange500);
 }
 
 .Header .navbar {
@@ -48,22 +66,21 @@ body {
   height: 50%;
 
   text-align: center;
-
-  background-color: #aaec8a;
+  background-color: var(--c_green500);
 }
 
 /* Comienzo <SidebarLeft> */
 .SidebarLeft {
-  grid-column: 1 / 2;
+  grid-column: 1 / 4;
   grid-row: 2 / 3;
 
   text-align: center;
-  background-color: #99c2fe;
+  background-color: var(--c_blue500);
 }
 
 /* Comienzo <Main> */
 .Main {
-  grid-column: 2 / 3;
+  grid-column: 4 / 10;
   grid-row: 2 / 3;
 
   display: flex;
@@ -71,12 +88,12 @@ body {
   place-content: center center;
 
   text-align: center;
-  background-color: #b881ff;
+  background-color: var(--c_purple500);
 }
 
 /* Comienzo <SidebarRight> */
 .SidebarRight {
-  grid-column: 3 / 4;
+  grid-column: 10 / 13;
   grid-row: 2 / 3;
 
   text-align: center;
@@ -85,7 +102,7 @@ body {
 
 /* Comienzo <Footer> */
 .Footer {
-  grid-column: 1 / 4;
+  grid-column: 1 / 13;
   grid-row: 3 / 4;
 
   width: 100%;
@@ -96,7 +113,7 @@ body {
   place-content: center center;
 
   text-align: center;
-  background-color: #f7e1d7;
+  background-color: var(--c_pink500);
 }
 
 /* Media Queries ==> SM : 480px */
@@ -131,4 +148,3 @@ body {
     grid-row: 5 / 6;
   }
 }
-
