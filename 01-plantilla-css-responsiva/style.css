@@ -3,69 +3,148 @@
    ---- Hecho con <3 por Antonio Richaud c: --
    ------------------------------------------- 
 */
+@charset 'UTF-8';
+
+:root {
+  /* Configuracion fuentes */
+  --f_fontSize: 16px;
+  --f_lineHeight: 1.5;
+  --f_fontWeight: 400;
+  --f_fontFamily: "Manrope", sans-serif;
+
+  /* Paleta de colores */
+  --c_white: #fff;
+  --c_black: #000;
+  --c_orange500: #f6c356;
+  --c_green500: #aaec8a;
+  --c_blue500: #99c2fe;
+  --c_purple500: #b881ff;
+  --c_pink500: #f7e1d7;
+}
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  border: 1px solid red;
 }
 
 html {
-    height: 100%;
+  font-size: var(--f_fontWeight);
+  line-height: var(--f_lineHeight);
+  font-weight: var(--f_fontWeight);
+  font-family: var(--f_fontFamily);
 }
 
-body {
-    font-family: 'Manrope', sans-serif;
-    font-size: 16px;
-    height: 100%;
+.Body {
+  display: grid;
+  grid-template-rows: 20vh 55vh 25vh;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 0;
+
+  font-size: clamp(100%, 1rem + 1.5vw, 25px);
 }
 
-.grid {
-    display: grid;
-    grid-template-rows: 6rem 5rem auto 5rem;
-    grid-template-columns: 20% auto 20%;
-    font-size: 1.5rem;
-    height: 100%;
+/* Comienzo <Header> */
+.Header {
+  grid-column: 1 / 13;
+  grid-row: 1 / 2;
+
+  width: 100%;
+
+  display: flex;
+  flex-flow: column;
+  place-content: center center;
+
+  text-align: center;
+  background-color: var(--c_orange500);
 }
 
-@media (max-width: 480px) {
-    .grid {
-        grid-template-rows:
-            6rem 6rem 6rem auto 6rem 6rem;
-        grid-template-columns: 1fr;
-    }
+.Header .navbar {
+  width: 100%;
+  height: 50%;
 
-    aside,
-    main {
-        grid-column: 1 / 4;
-    }
+  text-align: center;
+  background-color: var(--c_green500);
 }
 
-nav,
-header,
-footer {
-    background: #F6C356;
-    grid-column: 1 / 4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Comienzo <SidebarLeft> */
+.SidebarLeft {
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+
+  text-align: center;
+  background-color: var(--c_blue500);
 }
 
-nav {
-    background: #AAEC8A;
+/* Comienzo <Main> */
+.Main {
+  grid-column: 4 / 10;
+  grid-row: 2 / 3;
+
+  display: flex;
+  flex-flow: column;
+  place-content: center center;
+
+  text-align: center;
+  background-color: var(--c_purple500);
 }
 
-aside,
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Comienzo <SidebarRight> */
+.SidebarRight {
+  grid-column: 10 / 13;
+  grid-row: 2 / 3;
+
+  text-align: center;
+  background-color: #99c2fe;
 }
 
-aside {
-    background: #99C2FE;
+/* Comienzo <Footer> */
+.Footer {
+  grid-column: 1 / 13;
+  grid-row: 3 / 4;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column;
+  place-content: center center;
+
+  text-align: center;
+  background-color: var(--c_pink500);
 }
 
-main {
-    background: #B881FF;
+/* Media Queries ==> SM : 480px */
+@media screen and (max-width: 480px) {
+  .Body {
+    grid-template-rows: 10vh repeat(2, 5vh) 70vh 10vh;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .Header {
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+  }
+
+  .SidebarLeft {
+    grid-column: 1 / 5;
+    grid-row: 2 / 3;
+  }
+
+  .SidebarRight {
+    grid-column: 1 / 5;
+    grid-row: 3 / 4;
+  }
+
+  .Main {
+    grid-column: 1 / 5;
+    grid-row: 4 / 5;
+  }
+
+  .Footer {
+    grid-column: 1 / 5;
+    grid-row: 5 / 6;
+  }
 }
